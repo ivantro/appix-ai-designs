@@ -1,0 +1,9 @@
+@theHostname = https://appix-ai-designs.azurewebsites.net/api
+# @theHostname = http://localhost:7071/api
+@theItem = styles
+
+### Styles Get All
+GET {{theHostname}}/styles
+
+### Styles Get By Id
+GET {{theHostname}}/styles/1
