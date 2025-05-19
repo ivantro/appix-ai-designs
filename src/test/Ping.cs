@@ -19,7 +19,7 @@ namespace com.appix.ai.design
         {
             var host = req.Host.ToString();
             _logger.LogInformation($"Request received from host: {host}");
-            return new OkObjectResult("Welcome to Azure Functions3!");
+            return new OkObjectResult($"Welcome to Azure Functions4: {host}");
         }
     }
 }
