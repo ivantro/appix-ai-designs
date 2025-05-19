@@ -17,8 +17,9 @@ namespace com.appix.ai.design
         [Function("Ping")]
         public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req)
         {
-            _logger.LogInformation("C# HTTP trigger function processed a request.");
-            return new OkObjectResult("Welcome to Azure Functions2!");
+            var host = req.Host.ToString();
+            _logger.LogInformation($"Request received from host: {host}");
+            return new OkObjectResult("Welcome to Azure Functions3!");
         }
     }
 }
