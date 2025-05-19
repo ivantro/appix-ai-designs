@@ -19,7 +19,7 @@ namespace com.appix.ai.design
         {
             var host = req.Host.ToString();
             var requester = req.Headers["Origin"].ToString();
-            _logger.LogInformation($"Request received from host: {host}");
+            _logger.LogInformation($"Request received from host: {host}, requester: {requester}");
             return new OkObjectResult($"Welcome to Azure Functions5: {host},{requester}");
         }
     }
