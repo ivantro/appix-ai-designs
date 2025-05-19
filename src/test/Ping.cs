@@ -18,8 +18,9 @@ namespace com.appix.ai.design
         public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req)
         {
             var host = req.Host.ToString();
+            var requester = req.Headers["Origin"].ToString();
             _logger.LogInformation($"Request received from host: {host}");
-            return new OkObjectResult($"Welcome to Azure Functions4: {host}");
+            return new OkObjectResult($"Welcome to Azure Functions5: {host},{requester}");
         }
     }
 }
