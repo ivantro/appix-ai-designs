@@ -9,6 +9,7 @@ using Microsoft.Azure.Functions.Worker.Http;
 namespace AIDesign;
 
 // Usage in Javascript:
+// fetch("https://appix-ai-designs.azurewebsites.net/api/ProxyFunction?url=https://external-api.com/api/v1/data")
 // fetch("https://<your-function>.azurewebsites.net/api/ProxyFunction?url=https://external-api.com/data")
 
 public class ProxyFunction {
@@ -16,7 +17,7 @@ public class ProxyFunction {
 
     [Function("ProxyFunction")]
     public async Task<HttpResponseData> Run(
-        [HttpTrigger(Microsoft.Azure.Functions.Worker.AuthorizationLevel.Anonymous, "get", "post", "options")] HttpRequestData req){
+        [HttpTrigger(Microsoft.Azure.Functions.Worker.AuthorizationLevel.Anonymous, "get", "post", "options", "put", "delete")] HttpRequestData req){
         // Handle preflight
         if (req.Method == "OPTIONS"){
             var response = req.CreateResponse(HttpStatusCode.NoContent);

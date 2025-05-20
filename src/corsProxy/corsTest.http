@@ -12,9 +12,9 @@ Content-Type: application/json
 
 {
   "username": "ivan",
-  "password": "ivan"
+  "password": "ivan2"
 }
 
 
 ###
-GET https://appix-ai-designs.azurewebsites.net/api/Ping
+DELETE http://localhost:7071/api/ProxyFunction?url=https://aiavatar.innovationcatalog.pwc.com/ai-avatar/api/v1/persona/41
