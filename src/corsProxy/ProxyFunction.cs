@@ -50,8 +50,8 @@ public class ProxyFunction {
             // Optionally: copy headers or body
             if (req.Method == "POST" || req.Method == "PUT") {
                 proxyRequest.Content = new StreamContent(req.Body);
-                if (req.Headers.TryGetValues("Content-Type", out var contentType)) {
-                    proxyRequest.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(contentType.First());
+                if (req.Headers.TryGetValues("Content-Type", out var contentType)){
+                    proxyRequest.Content.Headers.TryAddWithoutValidation("Content-Type", contentType.First());
                 }
             }
 
