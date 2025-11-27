@@ -6,8 +6,8 @@ namespace com.appix.ai.design {
         public string title { get; set; }
         public string linkURL { get; set; }
         public string imageURL { get; set; }
-        public int productType { get; set; }
-        public int productCategory { get; set; }
+        public int productId { get; set; }
+        public int categoryId { get; set; }
         public bool isTopCategory { get; set; }
         public bool isNewCategory { get; set; }
     }

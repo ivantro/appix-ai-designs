@@ -1,0 +1,9 @@
+# @theHostname = https://appix-ai-designs.azurewebsites.net/api
+@theHostname = http://localhost:7071/api
+@theItem = categories
+
+### Merch Get All
+GET {{theHostname}}/{{theItem}}
+
+### Merch Get By Id
+GET {{theHostname}}/{{theItem}}/1
