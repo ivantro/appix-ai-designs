@@ -18,3 +18,7 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:7071/api/ProxyFunction?url=https://aiavatar.innovationcatalog.pwc.com/ai-avatar/api/v1/persona/41
+
+
+###
+GET https://aiavatar.innovationcatalog.pwc.com/ai-avatar/api/v1/audit/demos/1
