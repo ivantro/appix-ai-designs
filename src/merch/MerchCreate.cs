@@ -15,7 +15,7 @@ namespace com.appix.ai.design {
 
         [Function(nameof(MerchCreateItem))]
         public async Task<HttpResponseData> MerchCreateItem(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "merch")] HttpRequestData req,
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = "merch")] HttpRequestData req,
             [CosmosDBInput(Connection = "CosmosDbConnectionString")] CosmosClient client) {
             
             _logger.LogInformation("ITR..MerchCreateItem(): Function processed a request to create a merch item.");

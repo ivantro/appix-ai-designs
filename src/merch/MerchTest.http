@@ -22,10 +22,12 @@ GET {{theHostname}}/merch/filter?categoryIds=4
 
 ### Merch Create
 POST {{theHostname}}/{{theItem}}
+# Replace 'YOUR_LOCAL_OR_AZURE_FUNCTION_KEY' with the actual key from your terminal or Azure Portal
+x-functions-key: YOUR_LOCAL_OR_AZURE_FUNCTION_KEY
 Content-Type: application/json
 
 {
-    "title": "Test Product",
+    "title": "Test Product 2",
     "linkURL": "https://www.google.com",
     "imageURL": "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png",
     "productId": 1,
