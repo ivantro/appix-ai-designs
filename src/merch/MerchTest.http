@@ -15,7 +15,22 @@ GET {{theHostname}}/{{theItem}}/product/1
 GET {{theHostname}}/{{theItem}}/category/1
 
 ### Merch Filter
-GET {{theHostname}}/{{theItem}}/filter?categoryIds=1&productId=1&isMine=true&isTopCategory=true&isNewCategory=true
+GET {{theHostname}}/{{theItem}}/filter?categoryIds=1&productId=1&isMine=true&isTopCategory=true&isNewCategory=false
 
 ### Merch Filter
 GET {{theHostname}}/merch/filter?categoryIds=4
+
+### Merch Create
+POST {{theHostname}}/{{theItem}}
+Content-Type: application/json
+
+{
+    "title": "Test Product",
+    "linkURL": "https://www.google.com",
+    "imageURL": "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png",
+    "productId": 1,
+    "categoryIds": [1, 2, 3],
+    "isTopCategory": true,
+    "isNewCategory": true,
+    "isMine": true
+}
