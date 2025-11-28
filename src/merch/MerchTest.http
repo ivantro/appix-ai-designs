@@ -34,5 +34,6 @@ Content-Type: application/json
     "categoryIds": [1, 2, 3],
     "isTopCategory": true,
     "isNewCategory": true,
-    "isMine": true
+    "isMine": true,
+    "isActive": true
 }

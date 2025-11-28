@@ -63,68 +63,6 @@ namespace com.appix.ai.design {
             return req.CreateResponse(HttpStatusCode.NoContent); // Return 204 if no data is found
         }
 
-        [Function(nameof(MerchByProduct))]
-        public async Task<HttpResponseData> MerchByProduct(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "merch/product/{productId}")] HttpRequestData req,
-            [CosmosDBInput(Connection = "CosmosDbConnectionString")] CosmosClient client,
-            int productId) {
-            _logger.LogInformation($"ITR..MerchByProduct(): Function processed a request for productId: {productId}");
-
-            var container = client.GetContainer(Constants.DATABASE_NAME, Constants.TABLE_MERCH);
-            var queryDefinition = new QueryDefinition("SELECT * FROM c WHERE c.productId = @productId")
-                .WithParameter("@productId", productId);
-
-            var iterator = container.GetItemQueryIterator<MerchPOCO>(queryDefinition);
-
-            List<MerchPOCO> resultList = new List<MerchPOCO>();
-
-            while (iterator.HasMoreResults) {
-                var documents = await iterator.ReadNextAsync();
-                resultList.AddRange(documents);
-            }
-
-            if (resultList.Count > 0) {
-                _logger.LogInformation($"Returning {resultList.Count} merch items for productId: {productId}");
-
-                var response = req.CreateResponse(HttpStatusCode.OK);
-                await response.WriteAsJsonAsync(resultList);
-                return response;
-            }
-
-            return req.CreateResponse(HttpStatusCode.NoContent);
-        }
-
-        [Function(nameof(MerchByCategory))]
-        public async Task<HttpResponseData> MerchByCategory(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "merch/category/{categoryId}")] HttpRequestData req,
-            [CosmosDBInput(Connection = "CosmosDbConnectionString")] CosmosClient client,
-            int categoryId) {
-            _logger.LogInformation($"ITR..MerchByCategory(): Function processed a request for categoryId: {categoryId}");
-
-            var container = client.GetContainer(Constants.DATABASE_NAME, Constants.TABLE_MERCH);
-            var queryDefinition = new QueryDefinition("SELECT * FROM c WHERE ARRAY_CONTAINS(c.categoryIds, @categoryId)")
-                .WithParameter("@categoryId", categoryId);
-
-            var iterator = container.GetItemQueryIterator<MerchPOCO>(queryDefinition);
-
-            List<MerchPOCO> resultList = new List<MerchPOCO>();
-
-            while (iterator.HasMoreResults) {
-                var documents = await iterator.ReadNextAsync();
-                resultList.AddRange(documents);
-            }
-
-            if (resultList.Count > 0) {
-                _logger.LogInformation($"Returning {resultList.Count} merch items for categoryId: {categoryId}");
-
-                var response = req.CreateResponse(HttpStatusCode.OK);
-                await response.WriteAsJsonAsync(resultList);
-                return response;
-            }
-
-            return req.CreateResponse(HttpStatusCode.NoContent);
-        }
-
         [Function(nameof(MerchFilter))]
         public async Task<HttpResponseData> MerchFilter(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "merch/filter")] HttpRequestData req,
@@ -183,6 +121,13 @@ namespace com.appix.ai.design {
                 queryParts.Add("c.isNewCategory = @isNewCategory");
                 parameters["@isNewCategory"] = isNewCategory;
             }
+
+            bool isActive = true;
+            if (!string.IsNullOrEmpty(queryParams["isActive"]) && bool.TryParse(queryParams["isActive"], out bool isActiveParam)) {
+                isActive = isActiveParam;
+            }
+            queryParts.Add("c.isActive = @isActive");
+            parameters["@isActive"] = isActive;
 
             // Build the final query
             QueryDefinition queryDefinition;

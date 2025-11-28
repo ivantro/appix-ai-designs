@@ -13,5 +13,7 @@ namespace com.appix.ai.design {
         public bool isTopCategory { get; set; }
         public bool isNewCategory { get; set; }
         public bool isMine{ get; set; }
+        public bool isActive{ get; set; }
+        
     }
 }
