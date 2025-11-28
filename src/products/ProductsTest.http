@@ -1,5 +1,5 @@
-# @theHostname = https://appix-ai-designs.azurewebsites.net/api
-@theHostname = http://localhost:7071/api
+@theHostname = https://appix-ai-designs.azurewebsites.net/api
+# @theHostname = http://localhost:7071/api
 @theItem = products
 
 ### Merch Get All
