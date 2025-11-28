@@ -265,3 +265,5 @@ __pycache__/
 
 # Mac entries
 .DS_Store
+
+src/merch/MerchTestWithKey.http

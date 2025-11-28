@@ -1,5 +1,5 @@
-# @theHostname = https://appix-ai-designs.azurewebsites.net/api
-@theHostname = http://localhost:7071/api
+@theHostname = https://appix-ai-designs.azurewebsites.net/api
+# @theHostname = http://localhost:7071/api
 @theItem = merch
 
 ### Merch Get All
@@ -27,7 +27,7 @@ x-functions-key: YOUR_LOCAL_OR_AZURE_FUNCTION_KEY
 Content-Type: application/json
 
 {
-    "title": "Test Product 2",
+    "title": "Test Product 3",
     "linkURL": "https://www.google.com",
     "imageURL": "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png",
     "productId": 1,
