@@ -153,15 +153,17 @@ namespace com.appix.ai.design {
                 resultList.AddRange(documents);
             }
 
+            var response = req.CreateResponse(HttpStatusCode.OK);
+
             if (resultList.Count > 0) {
                 _logger.LogInformation($"Returning {resultList.Count} merch items with applied filters.");
-
-                var response = req.CreateResponse(HttpStatusCode.OK);
                 await response.WriteAsJsonAsync(resultList);
-                return response;
+            } else {
+                _logger.LogInformation("No merch items found with applied filters. Returning empty array.");
+                await response.WriteAsJsonAsync(new List<MerchPOCO>());
             }
 
-            return req.CreateResponse(HttpStatusCode.NoContent);
+            return response;
         }  
     }
 }

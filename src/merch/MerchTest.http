@@ -2,6 +2,7 @@
 # @theHostname = http://localhost:7071/api
 @theItem = merch
 
+### https://appix-ai-designs.azurewebsites.net/api/merch
 ### Merch Get All
 GET {{theHostname}}/{{theItem}}
 
@@ -15,11 +16,13 @@ GET {{theHostname}}/{{theItem}}/product/1
 GET {{theHostname}}/{{theItem}}/category/1
 
 ### Merch Filter
-GET {{theHostname}}/{{theItem}}/filter?categoryIds=1&productId=1&isMine=true&isTopCategory=true&isNewCategory=false
+GET {{theHostname}}/{{theItem}}/filter?categoryIds=1&productId=1&isMine=true&isTopCategory=true&isNewCategory=false&isActive=true
 
 ### Merch Filter
-GET {{theHostname}}/merch/filter?categoryIds=4
+GET {{theHostname}}/merch/filter?categoryIds=1
 
+### Merch Filter
+GET {{theHostname}}/merch/filter?isActive=false
 ### Merch Create
 POST {{theHostname}}/{{theItem}}
 # Replace 'YOUR_LOCAL_OR_AZURE_FUNCTION_KEY' with the actual key from your terminal or Azure Portal
