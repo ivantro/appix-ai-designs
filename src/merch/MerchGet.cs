@@ -153,6 +153,9 @@ namespace com.appix.ai.design {
                 resultList.AddRange(documents);
             }
 
+            // Sort by rank in descending order (10 first, 0 last)
+            resultList = resultList.OrderByDescending(x => x.rank).ToList();
+
             var response = req.CreateResponse(HttpStatusCode.OK);
 
             if (resultList.Count > 0) {
