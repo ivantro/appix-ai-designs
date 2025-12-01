@@ -1,9 +1,20 @@
-@theHostname = https://appix-ai-designs.azurewebsites.net/api
-# @theHostname = http://localhost:7071/api
+# @theHostname = https://appix-ai-designs.azurewebsites.net/api
+@theHostname = http://localhost:7071/api
+
 @theItem = categories
 
 ### Merch Get All
-GET {{theHostname}}/{{theItem}}
+GET {{theHostname}}/{{theItem}}/all
 
 ### Merch Get By Id
 GET {{theHostname}}/{{theItem}}/1
+
+### Categories Filtered
+GET {{theHostname}}/{{theItem}}
+
+### Categories Filter
+GET {{theHostname}}/{{theItem}}?isActive=true
+
+### Categories Filter
+GET {{theHostname}}/{{theItem}}?isActive=false
+
