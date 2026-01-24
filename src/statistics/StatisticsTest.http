@@ -1,0 +1,45 @@
+@theHostname = https://appix-ai-designs.azurewebsites.net/api
+# @theHostname = http://localhost:7071/api
+
+### Record a click
+POST {{theHostname}}/statistics/clicks
+Content-Type: application/json
+
+{
+  "senderId": "user123",
+  "productId": 42,
+  "tag": "view",
+  "timestamp": "2024-01-15T10:30:00Z"
+}
+
+### Record a click (without timestamp - will use current time)
+POST {{theHostname}}/statistics/clicks
+Content-Type: application/json
+
+{
+  "senderId": "user456",
+  "productId": 42,
+  "tag": "click"
+}
+
+### Get stats for a specific product
+GET {{theHostname}}/statistics/stats/42
+
+### Get all stats
+GET {{theHostname}}/statistics/stats
+
+### Get all clicks
+GET {{theHostname}}/statistics/clicks
+
+### Get clicks filtered by productId
+GET {{theHostname}}/statistics/clicks?productId=42
+
+### Get clicks filtered by senderId
+GET {{theHostname}}/statistics/clicks?senderId=user123
+
+### Get clicks filtered by tag
+GET {{theHostname}}/statistics/clicks?tag=view
+
+### Get clicks with multiple filters
+GET {{theHostname}}/statistics/clicks?productId=42&senderId=user123&tag=click
+
