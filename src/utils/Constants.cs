@@ -9,6 +9,7 @@ namespace com.appix.ai.design {
         public const string TABLE_CATEGORIES = "categories";
         public const string TABLE_CLICKS = "clicks";
         public const string TABLE_CLICK_STATS = "clickStats";
+        public const string TABLE_CONFIG = "config";
         public const string FIELD_TYPE_INT= "int";
         public const string FIELD_TYPE_BOOL= "bool";
         public const string FIELD_TYPE_FLOAT= "float";

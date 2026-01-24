@@ -8,7 +8,7 @@ Content-Type: application/json
 {
   "senderId": "user123",
   "productId": 42,
-  "tag": "view",
+  "tag": "pickleball-ios",
   "timestamp": "2024-01-15T10:30:00Z"
 }
 
@@ -19,7 +19,7 @@ Content-Type: application/json
 {
   "senderId": "user456",
   "productId": 42,
-  "tag": "click"
+  "tag": "pickleball-ios"
 }
 
 ### Get stats for a specific product
