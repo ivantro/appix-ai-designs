@@ -1,5 +1,5 @@
-# @theHostname = https://appix-ai-designs.azurewebsites.net/api
-@theHostname = http://localhost:7071/api
+@theHostname = https://appix-ai-designs.azurewebsites.net/api
+# @theHostname = http://localhost:7071/api
 @theItem = merch
 
 ### https://appix-ai-designs.azurewebsites.net/api/merch
@@ -40,3 +40,10 @@ Content-Type: application/json
     "isMine": true,
     "isActive": true
 }
+
+###
+GET http://localhost:7071/api/merch/filter?categoryIds=1&productId=1
+
+###
+GET https://appix-ai-designs.azurewebsites.net/api/merch/filter?categoryIds=1&productId=1
+

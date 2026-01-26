@@ -42,7 +42,7 @@ namespace com.appix.ai.design {
                 }
 
                 // Validate required fields
-                if (string.IsNullOrWhiteSpace(click.senderId) || click.productId <= 0) {
+                if (string.IsNullOrWhiteSpace(click.senderId) || string.IsNullOrWhiteSpace(click.productId)) {
                     var badRequestResponse = req.CreateResponse(HttpStatusCode.BadRequest);
                     await badRequestResponse.WriteStringAsync("senderId and productId are required.");
                     return badRequestResponse;
@@ -89,15 +89,14 @@ namespace com.appix.ai.design {
             }
         }
 
-        private async Task UpdateClickStats(CosmosClient client, int productId) {
+        private async Task UpdateClickStats(CosmosClient client, string productId) {
             try {
                 var statsContainer = client.GetContainer(Constants.DATABASE_NAME, Constants.TABLE_CLICK_STATS);
-                var productIdString = productId.ToString();
 
                 // Try to read existing stats
                 try {
                     var existingStats = await statsContainer.ReadItemAsync<ClickStatsPOCO>(
-                        productIdString,
+                        productId,
                         new PartitionKey(Constants.PARTITION_VALUE)
                     );
 
@@ -105,13 +104,13 @@ namespace com.appix.ai.design {
                     existingStats.Resource.count++;
                     await statsContainer.ReplaceItemAsync(
                         existingStats.Resource,
-                        productIdString,
+                        productId,
                         new PartitionKey(Constants.PARTITION_VALUE)
                     );
                 } catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound) {
                     // Create new stats record
                     var newStats = new ClickStatsPOCO {
-                        id = productIdString,
+                        id = productId,
                         type = Constants.PARTITION_VALUE,
                         productId = productId,
                         count = 1

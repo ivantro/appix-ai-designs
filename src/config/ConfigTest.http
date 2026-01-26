@@ -1,7 +1,8 @@
 @theHostname = https://appix-ai-designs.azurewebsites.net/api
-#@theHostname = http://localhost:7071/api
+# @theHostname = http://localhost:7071/api
 
 ### Get config for an application
+# https://appix-ai-designs.azurewebsites.net/api//config/pickleball-ios
 GET {{theHostname}}/config/pickleball-ios
 
 ### Get config for another application

@@ -5,7 +5,7 @@ namespace com.appix.ai.design {
         public string? id { get; set; }
         public string? type { get; set; }
         public string? senderId { get; set; }
-        public int productId { get; set; }
+        public string productId { get; set; }
         public DateTime timestamp { get; set; }
         public string? tag { get; set; }
     }
@@ -13,7 +13,7 @@ namespace com.appix.ai.design {
     public class ClickStatsPOCO {
         public string? id { get; set; }  // Will be the productId as string
         public string? type { get; set; }
-        public int productId { get; set; }
+        public string productId { get; set; }
         public int count { get; set; }
     }
 }

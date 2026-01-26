@@ -7,18 +7,18 @@ Content-Type: application/json
 
 {
   "senderId": "user123",
-  "productId": 42,
-  "tag": "pickleball-ios",
-  "timestamp": "2024-01-15T10:30:00Z"
+  "productId": "42ABC",
+  "tag": "pickleball-ios"
 }
 
 ### Record a click (without timestamp - will use current time)
+# https://appix-ai-designs.azurewebsites.net/api/statistics/clicks
 POST {{theHostname}}/statistics/clicks
 Content-Type: application/json
 
 {
-  "senderId": "user456",
-  "productId": 42,
+  "senderId": "<The SenderID in user preferences>",
+  "productId": "<The ID of the Merch Item Selected>",
   "tag": "pickleball-ios"
 }
 

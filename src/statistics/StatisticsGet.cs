@@ -23,7 +23,7 @@ namespace com.appix.ai.design {
             try {
                 var statsContainer = client.GetContainer(Constants.DATABASE_NAME, Constants.TABLE_CLICK_STATS);
 
-                if (!string.IsNullOrEmpty(productId) && int.TryParse(productId, out int productIdInt)) {
+                if (!string.IsNullOrEmpty(productId)) {
                     // Get stats for a specific product
                     try {
                         var stats = await statsContainer.ReadItemAsync<ClickStatsPOCO>(
@@ -38,7 +38,7 @@ namespace com.appix.ai.design {
                         // Return zero count if not found
                         var zeroStats = new ClickStatsPOCO {
                             id = productId,
-                            productId = productIdInt,
+                            productId = productId,
                             count = 0
                         };
                         var response = req.CreateResponse(HttpStatusCode.OK);
@@ -81,9 +81,9 @@ namespace com.appix.ai.design {
             var parameters = new Dictionary<string, object>();
 
             // Filter by productId if provided
-            if (!string.IsNullOrEmpty(queryParams["productId"]) && int.TryParse(queryParams["productId"], out int productId)) {
+            if (!string.IsNullOrEmpty(queryParams["productId"])) {
                 queryParts.Add("c.productId = @productId");
-                parameters["@productId"] = productId;
+                parameters["@productId"] = queryParams["productId"].ToString();
             }
 
             // Filter by senderId if provided
